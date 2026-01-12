@@ -13,6 +13,145 @@ This skill provides expert-level knowledge of Florida foreclosure law, lien prio
 
 ---
 
+## 🔐 CRITICAL: Data Integrity Rules (ALWAYS FOLLOW)
+
+### Never Invent Data - ZERO TOLERANCE
+
+**❌ NEVER create or invent:**
+- Judgment amounts (must come from BECA or RealForeclose)
+- Case numbers (must come from official Brevard County Clerk website)
+- Property addresses (must come from BCPAO or court records)
+- Assessed values (must come from BCPAO API)
+- Lien amounts (must come from AcclaimWeb recorded documents)
+- Repair estimates without basis (must have comparable data or professional estimate)
+- ARV without supporting comps (must have recent sales data within 6 months, same zip)
+
+**✅ ALWAYS do:**
+- Cite data sources for every factual claim
+- Mark unknowns explicitly as "PENDING VERIFICATION" or "Unknown - requires [specific source]"
+- Be transparent about data limitations
+- Use "Cannot determine without [specific data]" when appropriate
+- Make honest recommendations based on available data only
+
+### When Data is Unavailable
+
+**If you cannot access real data:**
+1. **STOP immediately** - Do not proceed with invented data
+2. **State clearly:** "I cannot access [specific data source]"
+3. **Ask:** "Should I wait for data access, or create a clearly-labeled mock example for demonstration?"
+4. **If creating mock:** Label EVERY section with "⚠️ MOCK DATA - FOR DEMONSTRATION ONLY"
+5. **Never present mock as real** - This destroys trust and violates BidDeed.AI integrity
+
+### Verification Requirements
+
+**Before making BID recommendation:**
+- [ ] Case number verified in BECA or official clerk website
+- [ ] Judgment amount from BECA court records
+- [ ] Property address from BCPAO lookup (not guessed)
+- [ ] Lien search completed in AcclaimWeb (actual recorded documents)
+- [ ] Tax certificate search in RealTDM
+- [ ] ARV supported by recent comps (<6 months, same zip code)
+- [ ] Repair estimate has basis (inspection, contractor quote, or conservative comparable)
+
+**Before making SKIP recommendation:**
+- [ ] Valid reason documented (low ratio, title issue, location, timing)
+- [ ] Not skipping due to incomplete research (do the work first)
+- [ ] Alternative exit strategies considered and rejected with rationale
+
+**For any recommendation:**
+- [ ] All dollar amounts sourced (judgment, ARV, repairs, max bid)
+- [ ] All property characteristics verified (beds/baths/sqft from BCPAO or MLS)
+- [ ] Plaintiff identified and pattern analyzed (28 tracked BECA plaintiffs)
+- [ ] Auction date/time/location from official clerk website
+
+### Data Source Hierarchy (In Order of Reliability)
+
+**1. Official County/Court Records (Highest Reliability):**
+- Brevard County Clerk Foreclosure Sales List (case numbers, auction dates)
+- BECA Court Records (judgments, filing dates, attorneys)
+- BCPAO Property Appraiser (assessed values, characteristics)
+- AcclaimWeb Recorded Documents (mortgages, liens, satisfactions)
+- RealTDM Tax Certificates (outstanding tax certs)
+
+**2. Third-Party Data Providers (Medium Reliability):**
+- Zillow/Redfin (ARV estimates, require validation with comps)
+- RealForeclose (auction calendars, may lag official clerk data)
+- PropertyOnion (market data, requires cross-reference)
+- Census API (demographic data, stable but dated)
+
+**3. Estimates and Predictions (Clearly Mark as Such):**
+- BidDeed.AI ML Predictions (third-party purchase probability, repair estimates)
+- ForecastEngine™ Scores (always show 0-100 scale with confidence level)
+- Repair estimates without inspection (mark as "Conservative estimate pending inspection")
+- ARV without recent comps (mark as "Preliminary estimate requiring validation")
+
+**4. NEVER USE:**
+- Guesses presented as facts
+- Invented case numbers or addresses
+- Fabricated judgment amounts
+- Made-up property characteristics
+- Assumed lien priorities without search
+
+### Red Flags Requiring SKIP Recommendation
+
+**Data Integrity Issues:**
+- Judgment amount unknown or unavailable → SKIP
+- Property address cannot be determined → SKIP
+- No time for proper due diligence (< 24 hours) → SKIP
+- Lien search not completed → SKIP
+- Title concerns identified without resolution → SKIP
+
+**Report to User:**
+When data is insufficient: "RECOMMENDATION: SKIP - Insufficient verified data for safe bidding. Missing: [list specific data points]. Time needed: [estimate]. Suggest: [specific next steps or future auction date]."
+
+### Example: Correct vs Incorrect Approach
+
+**❌ INCORRECT (Invented Data):**
+```
+Property: 1250 Ocean Avenue, Satellite Beach, FL 32937
+Case: 2025CA015789
+Judgment: $285,000
+ARV: $410,000
+Max Bid: $185,000
+Recommendation: BID
+```
+*Problem: All data invented, no sources cited, presented as fact*
+
+**✅ CORRECT (Verified Data with Clear Limitations):**
+```
+Property: PENDING - Defendant name "JOHN SMITH" requires BCPAO lookup
+Case: 05-2024-CA-056239-XXCA-BC (verified: brevardclerk.us)
+Judgment: PENDING - Requires BECA court records access
+ARV: Cannot determine without property address
+Max Bid: Cannot calculate without judgment amount and ARV
+Recommendation: SKIP - Insufficient verified data (missing judgment, address, ARV)
+Next Steps: 
+  1. Query BECA for judgment amount
+  2. Search BCPAO for property address by defendant name
+  3. Once address obtained, pull comps for ARV
+  4. Complete lien search in AcclaimWeb
+  5. Reassess with complete data
+```
+*Correct: Clear about what's verified, what's pending, transparent limitations*
+
+### Consequences of Data Integrity Violations
+
+**If you invent data:**
+- User might make actual bidding decisions based on fake information
+- Financial losses for user (overbidding, title issues, repair surprises)
+- Destroys trust in BidDeed.AI system
+- Violates professional standards for investment analysis
+- Legal liability if presented as professional advice
+
+**Trust is earned through:**
+- Consistent transparency about data sources
+- Clear marking of estimates vs facts
+- Honest admission of limitations
+- Conservative recommendations when data incomplete
+- Never overstating confidence levels
+
+---
+
 ## Florida Foreclosure Law Fundamentals
 
 ### Lien Priority Hierarchy (Critical)
